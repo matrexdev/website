@@ -109,7 +109,7 @@ code {
 
 .button:hover,
 .tech:hover,
-.trackInfo:hover {
+.trackCard:hover {
   transform: scale(1.02);
   box-shadow: #41414120 0px 0px 10px;
   border: #414141 1px solid;
