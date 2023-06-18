@@ -1,0 +1,315 @@
+body {
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #090909;
+  min-height: 101vh;
+}
+* {
+  margin: 0;
+  user-select: none;
+  font-family: "Satoshi-Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+@font-face {
+  font-family: "Satoshi-Variable";
+  src: url("../public/fonts/Satoshi-Variable.woff2") format("woff2"),
+    url("../public/fonts/Satoshi-Variable.woff") format("woff"),
+    url("../public/fonts/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.header {
+  padding: 12px 0;
+  font-size: 18px;
+}
+
+.header > svg {
+  width: 60px;
+  height: auto;
+}
+
+.mainDiv {
+  display: flex;
+  gap: 125px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+.photo {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+}
+.spotify {
+  text-align: center;
+  display: flex;
+  gap: 3px;
+  width: fit-content;
+  font-size: 14px;
+  position: absolute;
+  top: 160px;
+}
+.songInfo {
+  opacity: 0.5;
+}
+.spotifyIcon {
+  width: 18px;
+  height: 18px;
+  align-self: flex-start;
+}
+.button {
+  text-align: center;
+
+  text-decoration: none;
+  border-radius: 6px;
+  background: #131313;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #999999;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  max-width: auto;
+  transition: 0.4s;
+  max-height: 32px;
+  gap: 10px;
+  border: transparent 1px solid;
+}
+
+.button > svg {
+  width: 24px;
+}
+
+.button:hover,
+.tech:hover,
+.trackInfo:hover {
+  transform: scale(1.02);
+  box-shadow: #41414120 0px 0px 10px;
+  border: #414141 1px solid;
+}
+.links {
+  gap: 8px;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.animation {
+  animation: 1.3s ease-out anim forwards;
+  opacity: 0;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.title {
+  font-size: 20px;
+  color: #a2a2a2;
+  margin-bottom: 12px;
+}
+.description {
+  font-size: 16px;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.status {
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #999999;
+}
+.statusDiv {
+  display: flex;
+  grid-gap: 6px;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.offline {
+  background: #363636;
+}
+
+.dnd {
+  background: #ff3737;
+}
+
+.online {
+  background: #52ff61;
+}
+
+.idle {
+  background: #faa81a;
+}
+.statusIcon {
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 50%;
+}
+.tech {
+  text-decoration: none;
+  border-radius: 6px;
+  background: #131313;
+  padding: 16px;
+  font-size: 16px;
+  color: #999999;
+  align-items: center;
+  display: flex;
+  border: transparent 1px solid;
+  gap: 14px;
+  transition: 0.4s;
+  max-width: auto;
+  max-height: 36px;
+}
+.techIUse {
+  margin-top: 32px;
+  gap: 8px;
+}
+.techTitle {
+  font-size: 20px;
+  color: #a2a2a2;
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+.techButtons {
+  grid-template-columns: auto auto auto auto;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 72px;
+}
+.tech > svg {
+  width: 36px;
+}
+
+.footer {
+  font-size: 16px;
+  margin-top: auto;
+}
+.footerText {
+  color: #a2a2a2;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.tracksDesc {
+  color: #a2a2a2;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.tracksDesc a {
+  text-decoration: underline;
+}
+.recentTracksDiv {
+  margin-top: 72px;
+  margin-bottom: 72px;
+}
+.trackTitle {
+  font-size: 20px;
+  color: #a2a2a2;
+  padding-bottom: 4px;
+}
+.tracks {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto auto;
+  font-size: 15px;
+  color: #c2c2c2;
+}
+.artistName {
+  display: block;
+  font-size: 13px;
+  color: #a3a3a3;
+}
+.trackCard {
+  text-decoration: none;
+  transition: 0.4s;
+  border-radius: 6px;
+  background: #131313;
+  padding: 10px;
+  display: flex;
+  border: transparent 1px solid;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardContent {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.trackImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+.time {
+  color: #a2a2a2;
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .App {
+    padding: 0 32px;
+  }
+  .mainDiv {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  .techButtons {
+    grid-template-columns: auto auto;
+  }
+  .spotify {
+    position: initial;
+  }
+  .tech {
+    justify-content: center;
+  }
+  .tech span {
+    width: 100px;
+  }
+  .tracks {
+    grid-template-columns: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .techButtons {
+    grid-template-columns: auto;
+  }
+  .links {
+    grid-template-columns: auto;
+  }
+}
