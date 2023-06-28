@@ -9,7 +9,7 @@ import RecentTracks from "./components/RecentTracks";
 const user = {
   name: "Matrex",
   imageurl:
-    "https://cdn.discordapp.com/attachments/1117203721688977478/1117406477213241446/godtierpfp.jpg",
+    "https://media.discordapp.net/attachments/1001112110157275166/1123747754171175023/pfp.png?width=671&height=671",
   imagesize: 90,
 };
 
