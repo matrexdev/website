@@ -36,7 +36,7 @@ export default function buttons() {
         </a>
         <a
           className="button"
-          href="https://www.instagram.com/matrexdev/"
+          href="https://www.instagram.com/azizyyp/"
           target="_blank"
           rel="noreferrer"
         >
