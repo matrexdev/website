@@ -9,7 +9,7 @@ import RecentTracks from "./components/RecentTracks";
 const user = {
   name: "Matrex",
   imageurl:
-    "https://instagram.fyei6-4.fna.fbcdn.net/v/t51.2885-19/429641029_721519826716570_5802812812757087910_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fyei6-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=szBwts98vmwAX9lcKCI&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCKJaE-ttT8RfwqXDnLd0a2J7u0d4UAmSsd4v5bCD9-rg&oe=65DF6003&_nc_sid=8b3546",
+    "https://i.pinimg.com/736x/93/fc/b1/93fcb19516c398f60d753dfbddc248aa.jpg",
   imagesize: 90,
 };
 
