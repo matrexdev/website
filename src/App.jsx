@@ -9,7 +9,7 @@ import RecentTracks from "./components/RecentTracks";
 const user = {
   name: "Matrex",
   imageurl:
-    "https://media.discordapp.net/attachments/1001112110157275166/1123747754171175023/pfp.png?width=671&height=671",
+    "https://instagram.fyei6-4.fna.fbcdn.net/v/t51.2885-19/429641029_721519826716570_5802812812757087910_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fyei6-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=szBwts98vmwAX9lcKCI&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCKJaE-ttT8RfwqXDnLd0a2J7u0d4UAmSsd4v5bCD9-rg&oe=65DF6003&_nc_sid=8b3546",
   imagesize: 90,
 };
 
@@ -34,7 +34,7 @@ function App() {
         <div className="aboutMe">
           <h2 className="title">About Me</h2>
           <p className="description">
-            Hey, I'm a 17 year old with a passion for programming and a beginner
+            Hey, I'm a 18 year old with a passion for programming and a beginner
             in the world of software development. I'm currently learning React
             and eager to expand my knowledge and skills. Ever since my
             childhood, I've been captivated by computers, and now I'm channeling
