@@ -1,78 +1,77 @@
 import React, { useState, useEffect } from "react";
-export default function RecentTracksSpotify() {
-  const [data, setData] = useState([]);
-  const fetchUserData = async () => {
-    await fetch("/api/recentTracks")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
+
+export default function RecentTracks() {
+  const [tracks, setTracks] = useState([]);
+
+  const fetchTracks = async () => {
+    try {
+      const response = await fetch("/api/recentTracks");
+      const data = await response.json();
+      setTracks(data);
+    } catch (error) {
+      console.error("Error fetching recent tracks:", error);
+    }
   };
+  
   useEffect(() => {
-    fetchUserData();
-    setInterval(() => {
-      fetchUserData();
-    }, 1000 * 60 * 3);
+    fetchTracks();
+    const interval = setInterval(fetchTracks, 1000 * 60 * 3);
+    return () => clearInterval(interval);
   }, []);
-  if (data == "") {
-    return;
+
+  if (!tracks.length) {
+    return null;
   }
 
-  const remainingTime = (x) => {
-    const startTime = new Date(x);
-    const currentTime = Date.now();
-    const pastTime = currentTime - startTime.getTime();
-    const hours = Math.floor(pastTime / (1000 * 60 * 60));
-    const minutes = Math.floor((pastTime % (1000 * 60 * 60)) / (1000 * 60)) + 1;
+  const getTimeAgo = (timestamp) => {
+    const secondsAgo = Math.floor(Date.now() / 1000) - parseInt(timestamp);
+    const hours = Math.floor(secondsAgo / 3600);
+    const minutes = Math.floor((secondsAgo % 3600) / 60);
 
-    return `${hours > 0 ? hours + " hours" : ""} ${
-      minutes > 0 ? minutes + " mins ago" : ""
-    }`;
+    if (hours > 0) {
+      return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+    }
+    return `${minutes} ${minutes === 1 ? 'min' : 'mins'} ago`;
   };
+
   return (
     <div className="recentTracksDiv">
-      <h2 className="trackTitle"> Recent Tracks</h2>
+      <h2 className="trackTitle">Recent Tracks</h2>
       <p className="tracksDesc">
-        Spotify songs that i've listened to recently.
-        <a href="https://open.spotify.com/user/p0ycrj5f31m4rmmtok2zaf7nw">
-          My spotify account.
+        Songs that I've listened to recently.
+        <a style={{ marginLeft: "5px" }} href="https://open.spotify.com/user/p0ycrj5f31m4rmmtok2zaf7nw" target="_blank" rel="noreferrer">
+          My Spotify profile
         </a>
       </p>
       <div className="tracks">
-        {data?.items &&
-          data.items.slice(0, 8).map((item, index) => (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={item.track.external_urls.spotify}
-              className="trackCard"
-              key={index}
-            >
-              <div className="cardContent">
-                <img
-                  className="trackImage"
-                  src={item.track.album.images[1].url}
-                  alt="track image"
-                />
-                <div className="trackInfo">
-                  <span
-                    className="trackName"
-                    href={item.track.external_urls.spotify}
-                  >
-                    {item.track?.name.length > 16
-                      ? item.track?.name.slice(0, 16) + "..."
-                      : item.track?.name}
-                  </span>
-                  <span className="artistName">
-                    by {item.track.artists[0].name}
-                  </span>
-                </div>
+        {tracks.map((track, index) => (
+          <a
+            key={track.url + index}
+            target="_blank"
+            rel="noreferrer"
+            href={track.url}
+            className="trackCard"
+          >
+            <div className="cardContent">
+              <img
+                className="trackImage"
+                src={track.image}
+                alt={`${track.title} album art`}
+              />
+              <div className="trackInfo">
+                <span className="trackName">
+                  {track.title.length > 16
+                    ? track.title.slice(0, 16) + "..."
+                    : track.title}
+                </span>
+                <span className="artistName">
+                  by {track.artist}
+                </span>
               </div>
-              <span className="time">{remainingTime(item.played_at)}</span>
-            </a>
-          ))}
+            </div>
+            <span className="time">{getTimeAgo(track.date)}</span>
+          </a>
+        ))}
       </div>
     </div>
   );
