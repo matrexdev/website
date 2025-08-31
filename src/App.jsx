@@ -43,7 +43,7 @@ function App() {
             grow as a developer, embracing the challenges and opportunities that
             lie ahead.
           </p>
-          <Discordstatus />
+          {/* <Discordstatus /> */}
         </div>
         <div className="avatar">
           <img alt="avatar" src={user.imageurl} className="photo" />

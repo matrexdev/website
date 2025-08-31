@@ -1,37 +1,67 @@
 import React, { useState, useEffect } from "react";
+
 export default function ListeningActivity() {
-  const [data, setData] = useState([]);
-  const fetchUserData = async () => {
-    await fetch("/api/listeningActivity")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchCurrentlyScrobbling = async () => {
+    try {
+      const response = await fetch("/api/listeningActivity");
+      const data = await response.json();
+      
+      if (data && data.track && data.artist) {
+        setCurrentTrack(data);
+      } else {
+        setCurrentTrack(null);
+      }
+    } catch (error) {
+      console.error("Error fetching listening activity:", error);
+      setCurrentTrack(null);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchUserData();
-    setInterval(() => {
-      fetchUserData();
-    }, 5000);
+    fetchCurrentlyScrobbling();
+    const interval = setInterval(fetchCurrentlyScrobbling, 30000);
+    return () => clearInterval(interval);
   }, []);
-  if (data == "") {
-    return;
+
+  if (isLoading) {
+    return (
+      <div className="spotify">
+        <img className="spotifyIcon" src="/images/spotify.png" alt="" />
+        <div className="song">
+          <span className="songInfo">Loading...</span>
+        </div>
+      </div>
+    );
   }
+
+  if (!currentTrack) {
+    return (
+      <div className="spotify">
+        <img className="spotifyIcon" src="/images/spotify.png" alt="" />
+        <div className="song">
+          <span className="songInfo">Not currently listening</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="spotify">
       <img className="spotifyIcon" src="/images/spotify.png" alt="" />
       <div className="song">
         <span className="songInfo">Listening to </span>
         <span className="songDetail">
-          {data.item?.name.length > 16
-            ? data.item?.name.slice(0, 16) + "..."
-            : data.item?.name}
+          {currentTrack.track.length > 16
+            ? currentTrack.track.slice(0, 16) + "..."
+            : currentTrack.track}
         </span>
         <span className="songInfo"> by </span>
-        <span className="songDetail">{data.item?.artists[0]?.name}</span>
+        <span className="songDetail">{currentTrack.artist}</span>
       </div>
     </div>
   );
