@@ -7,39 +7,19 @@ export default function buttons() {
     <div>
       <h2 className="title">Social</h2>
       <div className="links">
-        <a
-          className="button"
-          href="https://github.com/matrexdev"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="button" href="https://github.com/matrexdev" target="_blank" rel="noreferrer">
           <GithubIcon />
           Github
         </a>
-        <a
-          className="button"
-          href="https://twitter.com/matrexdev"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="button" href="https://twitter.com/matrexdev" target="_blank" rel="noreferrer">
           <TwitterIcon />
           Twitter
         </a>
-        <a
-          className="button"
-          href="https://discord.gg/mAffaJ2uhD"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="button" href="https://discord.gg/mAffaJ2uhD" target="_blank" rel="noreferrer">
           <DiscordIcon />
           Discord
         </a>
-        <a
-          className="button"
-          href="https://www.instagram.com/azizyyp/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="button" href="https://www.instagram.com/azizyiit/" target="_blank" rel="noreferrer">
           <InstagramIcon />
           Instagram
         </a>
